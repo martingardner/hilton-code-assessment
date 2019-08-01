@@ -23,13 +23,34 @@ const Main = () => {
   };
 
   const checkNeighborRoom = (roomOrder, checked) => {
+    console.log("checkNeighborRoom", roomOrder, checked);
     switch (roomOrder) {
       case 4:
-        setRoom4(checked);
+        if (checked) {
+          setRoom4(checked);
+          setRoom3(checked);
+          setRoom2(checked);
+        } else {
+          setRoom4(checked);
+        }
+        break;
       case 3:
-        setRoom3(checked);
+        if (checked) {
+          setRoom3(checked);
+          setRoom2(checked);
+        } else {
+          setRoom3(checked);
+          setRoom4(checked);
+        }
+        break;
       case 2:
-        setRoom2(checked);
+        if (checked) {
+          setRoom2(checked);
+        } else {
+          setRoom2(checked);
+          setRoom3(checked);
+          setRoom4(checked);
+        }
         break;
       default:
         break;
