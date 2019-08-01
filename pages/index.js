@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import serialize from "form-serialize";
 import Roombox from "../components/roomBox";
 
 const Main = () => {
@@ -9,19 +10,25 @@ const Main = () => {
 
   const formSubmit = e => {
     e.preventDefault();
+    let form = document.querySelector("form");
+    let obj = serialize(form, { disabled: true, empty: true, hash: true });
+    localStorageSet(obj);
+  };
+
+  const localStorageSet = data => {
+    if (data) {
+      localStorage.clear();
+      localStorage.setItem("Rooms", JSON.stringify(data));
+    }
   };
 
   const checkNeighborRoom = (roomOrder, checked) => {
-    console.log("checkNeighborRoom", roomOrder, checked);
     switch (roomOrder) {
       case 4:
-        console.log("4");
         setRoom4(checked);
       case 3:
-        console.log("3");
         setRoom3(checked);
       case 2:
-        console.log("2");
         setRoom2(checked);
         break;
       default:
@@ -36,7 +43,6 @@ const Main = () => {
     { name: "Room 4", checkbox: true, order: 4, checkboxState: getRoom4 }
   ];
 
-  console.log("index.js", getRoom1, getRoom2, getRoom3, getRoom4);
   return (
     <>
       <form onSubmit={formSubmit}>

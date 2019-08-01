@@ -3,11 +3,9 @@ import Adultpop from "./adultpop";
 import Childpop from "./childpop";
 
 const Roombox = props => {
-  console.log("Roombox", props);
   const [getCheckbox, setCheckbox] = useState(props.params.checkboxState);
 
   const updateCheckbox = e => {
-    console.log("updateCheckbox", getCheckbox, !getCheckbox);
     setCheckbox(!getCheckbox);
     props.checkNeighborRoom(props.params.order, !getCheckbox);
   };
@@ -15,6 +13,20 @@ const Roombox = props => {
   useEffect(() => {
     setCheckbox(props.params.checkboxState);
   }, [props.params.checkboxState]);
+
+  //check localstorage for checkbox data
+  //form-serialize uses on to represent checked for a checkbox
+  useEffect(() => {
+    try {
+      const roomLocalStorage = JSON.parse(localStorage.getItem("Rooms"));
+      let roomCheckbox = roomLocalStorage[`room${props.params.order}_checkbox`];
+      if (roomCheckbox === "on") {
+        setCheckbox(true);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
 
   return (
     <div>
@@ -24,16 +36,17 @@ const Roombox = props => {
             type="checkbox"
             onChange={updateCheckbox}
             checked={getCheckbox}
+            name={`room${props.params.order}_checkbox`}
           />
         )}
         {props.params.name}
       </div>
       <div>
         <div>
-          <Adultpop disableFields={!getCheckbox} />
+          <Adultpop disableFields={!getCheckbox} room={props.params.order} />
         </div>
         <div>
-          <Childpop disableFields={!getCheckbox} />
+          <Childpop disableFields={!getCheckbox} room={props.params.order} />
         </div>
       </div>
     </div>
