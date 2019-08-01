@@ -32,7 +32,6 @@ const Main = () => {
     { name: "Room 4", checkbox: true, order: 4, checkboxState: getRoom4 }
   ];
 
-  console.log("index.js", getRoom1, getRoom2, getRoom3, getRoom4);
   return (
     <>
       <form onSubmit={formSubmit}>
