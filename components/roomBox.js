@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Adultpop from "./adultpop";
 import Childpop from "./childpop";
 
-const Roombox = data => {
+const Roombox = props => {
   //console.log("Roombox", data);
   const [getCheckbox, setCheckbox] = useState(false);
 
@@ -14,14 +14,14 @@ const Roombox = data => {
   return (
     <div>
       <div>
-        {data.params.checkbox && (
+        {props.params.checkbox && (
           <input
             type="checkbox"
             onChange={updateCheckbox}
             checked={getCheckbox}
           />
         )}
-        {data.params.name}
+        {props.params.name}
       </div>
       <div>
         <div>

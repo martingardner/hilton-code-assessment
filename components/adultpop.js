@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-const Adultpop = disableFields => {
+const Adultpop = props => {
   const [getValue, setValue] = useState(1);
 
   const updateValue = e => {
     setValue(e.target.value);
   };
 
-  let disabled = disableFields ? "disabled" : "";
+  let disabled = props.disableFields ? "disabled" : "";
 
   return (
     <>
