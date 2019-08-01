@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Adultpop = props => {
   const [getValue, setValue] = useState(1);
@@ -8,6 +8,10 @@ const Adultpop = props => {
   };
 
   let disabled = props.disableFields ? "disabled" : "";
+
+  useEffect(() => {
+    setValue(1);
+  }, [props.disableFields]);
 
   return (
     <>

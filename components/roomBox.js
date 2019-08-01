@@ -3,11 +3,9 @@ import Adultpop from "./adultpop";
 import Childpop from "./childpop";
 
 const Roombox = props => {
-  console.log("Roombox", props);
   const [getCheckbox, setCheckbox] = useState(props.params.checkboxState);
 
   const updateCheckbox = e => {
-    console.log("updateCheckbox", getCheckbox, !getCheckbox);
     setCheckbox(!getCheckbox);
     props.checkNeighborRoom(props.params.order, !getCheckbox);
   };

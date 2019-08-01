@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Childpop = props => {
   const [getValue, setValue] = useState(0);
@@ -8,6 +8,10 @@ const Childpop = props => {
   };
 
   let disabled = props.disableFields ? "disabled" : "";
+
+  useEffect(() => {
+    setValue(0);
+  }, [props.disableFields]);
 
   return (
     <>

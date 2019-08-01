@@ -12,16 +12,12 @@ const Main = () => {
   };
 
   const checkNeighborRoom = (roomOrder, checked) => {
-    console.log("checkNeighborRoom", roomOrder, checked);
     switch (roomOrder) {
       case 4:
-        console.log("4");
         setRoom4(checked);
       case 3:
-        console.log("3");
         setRoom3(checked);
       case 2:
-        console.log("2");
         setRoom2(checked);
         break;
       default:
