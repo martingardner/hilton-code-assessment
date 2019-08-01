@@ -1,0 +1,26 @@
+{
+  "name": "hilton-code-assessment",
+  "version": "1.0.0",
+  "description": "hilton code assessment",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martingardner/hilton-code-assessment.git"
+  },
+  "author": "Martin Gardner II",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martingardner/hilton-code-assessment/issues"
+  },
+  "homepage": "https://github.com/martingardner/hilton-code-assessment#readme",
+  "dependencies": {
+    "next": "^9.0.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
