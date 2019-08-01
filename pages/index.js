@@ -67,7 +67,7 @@ const Main = () => {
   return (
     <>
       <form onSubmit={formSubmit}>
-        <fieldset>
+        <fieldset style={fieldset}>
           {roomData &&
             roomData.map((data, index) => {
               return (
@@ -86,3 +86,8 @@ const Main = () => {
 };
 
 export default Main;
+
+//styles
+const fieldset = {
+  border: "none"
+};

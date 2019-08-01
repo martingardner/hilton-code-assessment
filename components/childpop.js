@@ -31,7 +31,10 @@ const Childpop = props => {
 
   return (
     <>
-      <label>Children (0-17)</label>
+      <label style={label}>
+        Children <br />
+        (0-17)
+      </label>
       <select
         onChange={updateValue}
         value={getValue}
@@ -47,3 +50,8 @@ const Childpop = props => {
 };
 
 export default Childpop;
+
+//styles
+const label = {
+  display: "block"
+};

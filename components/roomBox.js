@@ -28,9 +28,11 @@ const Roombox = props => {
     }
   }, []);
 
+  let box = getCheckbox ? boxStyle : disabledBox;
+
   return (
-    <div>
-      <div>
+    <div style={box}>
+      <div style={checkboxRow}>
         {props.params.checkbox && (
           <input
             type="checkbox"
@@ -42,10 +44,10 @@ const Roombox = props => {
         {props.params.name}
       </div>
       <div>
-        <div>
+        <div style={dropdownBox}>
           <Adultpop disableFields={!getCheckbox} room={props.params.order} />
         </div>
-        <div>
+        <div style={dropdownBox}>
           <Childpop disableFields={!getCheckbox} room={props.params.order} />
         </div>
       </div>
@@ -54,3 +56,40 @@ const Roombox = props => {
 };
 
 export default Roombox;
+
+// styles
+const boxStyle = {
+  display: "inline-block",
+  width: "200px",
+  height: "100px",
+  border: "3px",
+  borderStyle: "solid",
+  borderColor: "#ccc",
+  marginRight: "10px",
+  borderRadius: "10px",
+  overflow: "hidden"
+};
+
+const disabledBox = {
+  display: "inline-block",
+  width: "200px",
+  height: "100px",
+  border: "3px",
+  borderStyle: "solid",
+  borderColor: "#ccc",
+  marginRight: "10px",
+  borderRadius: "10px",
+  overflow: "hidden",
+  backgroundColor: "#ccc"
+};
+
+const checkboxRow = {
+  backgroundColor: "#ccc",
+  padding: "5px 10px"
+};
+
+const dropdownBox = {
+  display: "inline-block",
+  width: "80px",
+  padding: "10px"
+};

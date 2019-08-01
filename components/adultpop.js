@@ -31,7 +31,10 @@ const Adultpop = props => {
 
   return (
     <>
-      <label>Adults (18+)</label>
+      <label style={label}>
+        Adults <br />
+        (18+)
+      </label>
       <select
         onChange={updateValue}
         value={getValue}
@@ -46,3 +49,8 @@ const Adultpop = props => {
 };
 
 export default Adultpop;
+
+//styles
+const label = {
+  display: "block"
+};
