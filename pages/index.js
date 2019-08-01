@@ -79,7 +79,7 @@ const Main = () => {
               );
             })}
         </fieldset>
-        <button>Submit</button>
+        <button style={submitButton}>Submit</button>
       </form>
     </>
   );
@@ -90,4 +90,9 @@ export default Main;
 //styles
 const fieldset = {
   border: "none"
+};
+
+const submitButton = {
+  marginLeft: "20px",
+  padding: "10px"
 };
