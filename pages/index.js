@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import serialize from "form-serialize";
 import Roombox from "../components/roomBox";
 
 const Main = () => {
@@ -9,6 +10,16 @@ const Main = () => {
 
   const formSubmit = e => {
     e.preventDefault();
+    let form = document.querySelector("form");
+    let obj = serialize(form, { disabled: true, empty: true, hash: true });
+    localStorageSet(obj);
+  };
+
+  const localStorageSet = data => {
+    if (data) {
+      localStorage.clear();
+      localStorage.setItem("Rooms", JSON.stringify(data));
+    }
   };
 
   const checkNeighborRoom = (roomOrder, checked) => {

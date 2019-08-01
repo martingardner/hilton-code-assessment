@@ -21,4 +21,5 @@ the following are justifications I used for various parts of assessment 1 and 2
   on what I could measure
 
 - Assessment 2
-  --
+  -- uses form-serialize and localstorge for the submit save and reload. I don't have a database for this and no api so that was the best solution I could
+  come up with for page refreshes.

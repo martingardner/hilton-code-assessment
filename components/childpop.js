@@ -10,13 +10,34 @@ const Childpop = props => {
   let disabled = props.disableFields ? "disabled" : "";
 
   useEffect(() => {
-    setValue(0);
+    if (disabled) {
+      setValue(0);
+    }
   }, [props.disableFields]);
+
+  //check localstorage for adultpop data
+  //form-serialize will string numbers
+  useEffect(() => {
+    try {
+      const roomLocalStorage = JSON.parse(localStorage.getItem("Rooms"));
+      let roomChildPop = roomLocalStorage[`room${props.room}_childpop`];
+      if (roomChildPop) {
+        setValue(roomChildPop);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
 
   return (
     <>
       <label>Children (0-17)</label>
-      <select onChange={updateValue} value={getValue} disabled={disabled}>
+      <select
+        onChange={updateValue}
+        value={getValue}
+        disabled={disabled}
+        name={`room${props.room}_childpop`}
+      >
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
