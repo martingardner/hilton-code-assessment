@@ -23,7 +23,6 @@ const Main = () => {
   };
 
   const checkNeighborRoom = (roomOrder, checked) => {
-    console.log("checkNeighborRoom", roomOrder, checked);
     switch (roomOrder) {
       case 4:
         if (checked) {
@@ -79,7 +78,9 @@ const Main = () => {
               );
             })}
         </fieldset>
-        <button style={submitButton}>Submit</button>
+        <button className="submit" style={submitButton}>
+          Submit
+        </button>
       </form>
     </>
   );
