@@ -18,3 +18,15 @@ it("childpop select inital value should equal '0'", () => {
   const component = render(<Childpop disableFields={true} room={1} />);
   expect(document.querySelector("select").value).toEqual("0");
 });
+
+// test passes, and assertion does show select value becomes 2, error in the logs after the test passes appear to be because of the
+// catch(e) console.log(e) response
+it("childpop select should have a value of 2 when local storage of it is 2", () => {
+  const obj = {
+    room1_childpop: "2"
+  };
+  localStorage.setItem("Rooms", JSON.stringify(obj));
+  const component = render(<Childpop disableFields={true} room={1} />);
+  expect(document.querySelector("select").value).toEqual("2");
+  localStorage.clear();
+});

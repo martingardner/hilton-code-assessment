@@ -11,6 +11,10 @@ test 1 &amp; 2.
 - npm run dev
 - go to http://localhost:3000
 
+#testing
+
+- 'npm test' or 'npm run test'
+
 #justifications
 the following are justifications I used for various parts of assessment 1 and 2
 
