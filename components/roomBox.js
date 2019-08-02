@@ -23,9 +23,7 @@ const Roombox = props => {
       if (roomCheckbox === "on") {
         setCheckbox(true);
       }
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   }, []);
 
   let box = getCheckbox ? boxStyle : disabledBox;

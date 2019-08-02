@@ -2,16 +2,21 @@
 
 test 1 &amp; 2.
 
-#install
+#test 1
+
+- test 1 is a compressed file at root (Hilton-Assessment-1.zip)
+- uncompress the folder and open index.html in a browser, it's a static site with no builder.
+
+#test 2 install
 
 - npm install
 
-#run
+#test 2 run
 
 - npm run dev
 - go to http://localhost:3000
 
-#testing
+#test 2 testing
 
 - 'npm test' or 'npm run test'
 
