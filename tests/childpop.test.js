@@ -14,7 +14,7 @@ it("childpop select should have name of room1_childpop when given room 1", () =>
   expect(document.querySelector("select").name).toEqual("room1_childpop");
 });
 
-it("childpop select inital value should equal 0", () => {
+it("childpop select inital value should equal '0'", () => {
   const component = render(<Childpop disableFields={true} room={1} />);
   expect(document.querySelector("select").value).toEqual("0");
 });
