@@ -24,9 +24,7 @@ const Adultpop = props => {
       if (roomAdultPop) {
         setValue(roomAdultPop);
       }
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   }, []);
 
   return (

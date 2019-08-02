@@ -24,9 +24,7 @@ const Childpop = props => {
       if (roomChildPop) {
         setValue(roomChildPop);
       }
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   }, []);
 
   return (
