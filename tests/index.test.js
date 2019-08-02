@@ -4,13 +4,6 @@ import Main from "../pages/index";
 
 afterEach(cleanup);
 
-const uncheckAllCheckboxes = () => {
-  let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  checkboxes.forEach(elem => {
-    elem.checked = false;
-  });
-};
-
 describe("Main component / index.js", () => {
   it("Main should render without crashing", () => {
     const component = render(<Main />);
