@@ -20,6 +20,11 @@ test 1 &amp; 2.
 
 - 'npm test' or 'npm run test'
 
+# nextJS vs Jest issue
+
+- Jest requires the babel.config.js file in order to work, however it existing causes the nextjs server to error out
+- The workaround is to rename the babel.config.js file until the server is running and then put babel.config.js back to run the Jest tests
+
 #justifications
 the following are justifications I used for various parts of assessment 1 and 2
 
