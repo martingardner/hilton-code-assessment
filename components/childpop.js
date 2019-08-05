@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
 
 const Childpop = props => {
-  const [getValue, setValue] = useState(0);
+  //const [getValue, setValue] = useState(0);
 
   const updateValue = e => {
-    setValue(e.target.value);
+    //setValue(e.target.value);
+    props.setdropdown(`${props.room}child`, e.target.value);
   };
 
   let disabled = props.disableFields ? "disabled" : "";
 
   useEffect(() => {
     if (disabled) {
-      setValue(0);
+      props.setdropdown(`${props.room}child`, 0);
     }
   }, [props.disableFields]);
 
   //check localstorage for adultpop data
   //form-serialize will string numbers
+  /*
   useEffect(() => {
     try {
       const roomLocalStorage = JSON.parse(localStorage.getItem("Rooms"));
@@ -26,7 +28,7 @@ const Childpop = props => {
       }
     } catch (e) {}
   }, []);
-
+*/
   return (
     <>
       <label style={label}>
@@ -35,7 +37,7 @@ const Childpop = props => {
       </label>
       <select
         onChange={updateValue}
-        value={getValue}
+        value={props.childpop}
         disabled={disabled}
         name={`room${props.room}_childpop`}
       >

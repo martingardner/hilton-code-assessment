@@ -3,19 +3,20 @@ import Adultpop from "./adultpop";
 import Childpop from "./childpop";
 
 const Roombox = props => {
-  const [getCheckbox, setCheckbox] = useState(props.params.checkboxState);
+  //const [getCheckbox, setCheckbox] = useState(props.params.checkboxState);
 
   const updateCheckbox = e => {
-    setCheckbox(!getCheckbox);
-    props.checkNeighborRoom(props.params.order, !getCheckbox);
+    //setCheckbox(!getCheckbox);
+    props.checkNeighborRoom(props.params.order, !props.params.checkboxState);
   };
 
   useEffect(() => {
-    setCheckbox(props.params.checkboxState);
+    //setCheckbox(props.params.checkboxState);
   }, [props.params.checkboxState]);
 
   //check localstorage for checkbox data
   //form-serialize uses on to represent checked for a checkbox
+  /*
   useEffect(() => {
     try {
       const roomLocalStorage = JSON.parse(localStorage.getItem("Rooms"));
@@ -25,8 +26,8 @@ const Roombox = props => {
       }
     } catch (e) {}
   }, []);
-
-  let box = getCheckbox ? boxStyle : disabledBox;
+  */
+  let box = props.params.checkboxState ? boxStyle : disabledBox;
 
   return (
     <div style={box}>
@@ -35,7 +36,7 @@ const Roombox = props => {
           <input
             type="checkbox"
             onChange={updateCheckbox}
-            checked={getCheckbox}
+            checked={props.params.checkboxState}
             name={`room${props.params.order}_checkbox`}
           />
         )}
@@ -43,10 +44,20 @@ const Roombox = props => {
       </div>
       <div>
         <div style={dropdownBox}>
-          <Adultpop disableFields={!getCheckbox} room={props.params.order} />
+          <Adultpop
+            disableFields={!props.params.checkboxState}
+            room={props.params.order}
+            adultpop={props.params.adultpop}
+            setdropdown={props.params.setdropdown}
+          />
         </div>
         <div style={dropdownBox}>
-          <Childpop disableFields={!getCheckbox} room={props.params.order} />
+          <Childpop
+            disableFields={!props.params.checkboxState}
+            room={props.params.order}
+            childpop={props.params.childpop}
+            setdropdown={props.params.setdropdown}
+          />
         </div>
       </div>
     </div>
