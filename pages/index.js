@@ -37,13 +37,13 @@ const Main = () => {
       AdultPop4: getAdultPop4,
       ChildPop4: getChildPop4
     };
-    console.log("localStorageObj", localStorageObj);
+
     localStorage.setItem("Rooms", JSON.stringify(localStorageObj));
   };
 
   const setStateFromStorage = () => {
     let storage = JSON.parse(localStorage.getItem("Rooms"));
-    console.log("setStateFromStorage", storage);
+
     setAdultPop1(storage.AdultPop1);
     setChildPop1(storage.ChildPop1);
     setRoom2(storage.Room2);
@@ -55,11 +55,6 @@ const Main = () => {
     setRoom4(storage.Room4);
     setAdultPop4(storage.AdultPop4);
     setChildPop4(storage.ChildPop4);
-  };
-
-  const clearLocalStorage = () => {
-    localStorage.clear();
-    console.log("clearLocalStorage", localStorage.getItem("Rooms"));
   };
 
   const setDropdownPop = (prop, val) => {
