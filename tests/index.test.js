@@ -32,6 +32,20 @@ describe("App Tests", () => {
   const checkbox3 = "[name='room3_checkbox']";
   const checkbox2 = "[name='room2_checkbox']";
 
+  const localStorageObj = {
+    AdultPop1: "1",
+    ChildPop1: "1",
+    Room2: true,
+    AdultPop2: "2",
+    ChildPop2: "2",
+    Room3: true,
+    AdultPop3: "2",
+    ChildPop3: "1",
+    Room4: false,
+    AdultPop4: "1",
+    ChildPop4: "0"
+  };
+
   describe("All checkboxes unchecked initially", () => {
     it("If Room 4 checkbox is checked, then Room 3 and Room 2 checkbox should be checked", () => {
       const component = render(<Main />);
@@ -146,5 +160,50 @@ describe("App Tests", () => {
     expect(document.querySelector(checkbox2).checked).toEqual(false);
     expect(document.querySelector(checkbox3).checked).toEqual(false);
     expect(document.querySelector(checkbox4).checked).toEqual(false);
+  });
+
+  describe("App Local Storage Tests", () => {
+    it("Room 2 should be checked and have an Adult Pop of 1, and Child Pop of 2", () => {
+      localStorage.clear();
+      localStorage.setItem("Rooms", JSON.stringify(localStorageObj));
+      const component = render(<Main />);
+
+      expect(document.querySelector(checkbox2).checked).toEqual(true);
+      expect(document.querySelector('[name="room2_adultpop"]').value).toEqual(
+        "2"
+      );
+      expect(document.querySelector('[name="room2_childpop"]').value).toEqual(
+        "2"
+      );
+    });
+
+    it("Room 2 should be checked, if unchecked, AdultPop should be 1, and Children should be 0", () => {
+      localStorage.clear();
+      localStorage.setItem("Rooms", JSON.stringify(localStorageObj));
+      const component = render(<Main />);
+
+      expect(document.querySelector(checkbox2).checked).toEqual(true);
+      expect(document.querySelector('[name="room2_adultpop"]').value).toEqual(
+        "2"
+      );
+      expect(document.querySelector('[name="room2_childpop"]').value).toEqual(
+        "2"
+      );
+
+      fireEvent(
+        document.querySelector(checkbox2),
+        new MouseEvent("click", {
+          bubbles: true,
+          cancelable: true
+        })
+      );
+
+      expect(document.querySelector('[name="room2_adultpop"]').value).toEqual(
+        "1"
+      );
+      expect(document.querySelector('[name="room2_childpop"]').value).toEqual(
+        "0"
+      );
+    });
   });
 });
