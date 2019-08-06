@@ -10,9 +10,10 @@ const RoomboxReducer = props => {
     //props.checkNeighborRoom(props.params.order, !props.params.checkboxState);
     //console.log("updateCheckbox");
     dispatch({
-      type: "ROOM_CHECKBOX",
+      type: "UPDATE_ACTIONINDEXVALUE",
       index: props.room,
-      checked: e.target.checked
+      param: "checkboxChecked",
+      value: e.target.checked
     });
   };
 
@@ -35,16 +36,7 @@ const RoomboxReducer = props => {
       </div>
       <div>
         <div style={dropdownBox}>{<AdultpopReducer room={props.room} />}</div>
-        <div style={dropdownBox}>
-          {/*
-          <ChildpopReducer
-            disableFields={!props.params.checkboxState}
-            room={props.params.order}
-            childpop={props.params.childpop}
-            setdropdown={props.params.setdropdown}
-          />
-          */}
-        </div>
+        <div style={dropdownBox}>{<ChildpopReducer room={props.room} />}</div>
       </div>
     </div>
   );

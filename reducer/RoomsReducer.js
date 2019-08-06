@@ -1,13 +1,5 @@
 const RoomsReducer = (state, action) => {
   switch (action.type) {
-    case "ROOM_CHECKBOX":
-      return {
-        ...state,
-        [action.index]: {
-          ...state[action.index],
-          checkboxChecked: action.checked
-        }
-      };
     case "UPDATE_ACTIONINDEXVALUE":
       console.log(
         "UPDATE_ACTIONINDEXVALUE",

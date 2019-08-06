@@ -1,17 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import DataContext from "../context/DataContext";
 
 const ChildpopReducer = props => {
-  const updateValue = e => {
-    props.setdropdown(`${props.room}child`, e.target.value);
+  const { dataReducer, dispatch } = useContext(DataContext);
+
+  const childpopDispatchUpdate = val => {
+    dispatch({
+      type: "UPDATE_ACTIONINDEXVALUE",
+      index: props.room,
+      param: "childpop",
+      value: val
+    });
   };
 
-  let disabled = props.disableFields ? "disabled" : "";
+  const updateValue = e => {
+    childpopDispatchUpdate(e.target.value);
+  };
+
+  let disabled = dataReducer[props.room].checkboxChecked ? "" : "disabled";
 
   useEffect(() => {
     if (disabled) {
-      props.setdropdown(`${props.room}child`, 0);
+      childpopDispatchUpdate(0);
     }
-  }, [props.disableFields]);
+  }, [dataReducer[props.room].checkboxChecked]);
 
   return (
     <>
@@ -21,7 +33,7 @@ const ChildpopReducer = props => {
       </label>
       <select
         onChange={updateValue}
-        value={props.childpop}
+        value={dataReducer[props.room].childpop}
         disabled={disabled}
         name={`room${props.room}_childpop`}
       >
