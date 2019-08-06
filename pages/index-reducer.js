@@ -20,7 +20,7 @@ const MainReducer = () => {
 
   const setStateFromStorage = () => {
     let storage = JSON.parse(localStorage.getItem("RoomsReducer"));
-    console.log("storage", storage);
+    //console.log("storage", storage);
     dispatchPopulateData(storage);
   };
 
