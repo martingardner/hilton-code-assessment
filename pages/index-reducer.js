@@ -63,111 +63,7 @@ const MainReducer = () => {
     setChildPop4(storage.ChildPop4);
   };
   */
-  /*
-  const setDropdownPop = (prop, val) => {
-    switch (prop) {
-      case "1adult":
-        setAdultPop1(val);
-        break;
-      case "1child":
-        setChildPop1(val);
-        break;
-      case "2adult":
-        setAdultPop2(val);
-        break;
-      case "2child":
-        setChildPop2(val);
-        break;
-      case "3adult":
-        setAdultPop3(val);
-        break;
-      case "3child":
-        setChildPop3(val);
-        break;
-      case "4child":
-        setChildPop4(val);
-        break;
-      case "4adult":
-        setAdultPop4(val);
-        break;
-      default:
-        break;
-    }
-  };
 
-  const checkNeighborRoom = (roomOrder, checked) => {
-    switch (roomOrder) {
-      case 4:
-        if (checked) {
-          setRoom4(checked);
-          setRoom3(checked);
-          setRoom2(checked);
-        } else {
-          setRoom4(checked);
-        }
-        break;
-      case 3:
-        if (checked) {
-          setRoom3(checked);
-          setRoom2(checked);
-        } else {
-          setRoom3(checked);
-          setRoom4(checked);
-        }
-        break;
-      case 2:
-        if (checked) {
-          setRoom2(checked);
-        } else {
-          setRoom2(checked);
-          setRoom3(checked);
-          setRoom4(checked);
-        }
-        break;
-      default:
-        break;
-    }
-  };
-
-  const roomData = [
-    {
-      name: "Room 1",
-      checkbox: false,
-      order: 1,
-      checkboxState: getRoom1,
-      adultpop: getAdultPop1,
-      childpop: getChildPop1,
-      setdropdown: setDropdownPop
-    },
-    {
-      name: "Room 2",
-      checkbox: true,
-      order: 2,
-      checkboxState: getRoom2,
-      adultpop: getAdultPop2,
-      childpop: getChildPop2,
-      setdropdown: setDropdownPop
-    },
-    {
-      name: "Room 3",
-      checkbox: true,
-      order: 3,
-      checkboxState: getRoom3,
-      adultpop: getAdultPop3,
-      childpop: getChildPop3,
-      setdropdown: setDropdownPop
-    },
-    {
-      name: "Room 4",
-      checkbox: true,
-      order: 4,
-      checkboxState: getRoom4,
-      adultpop: getAdultPop4,
-      childpop: getChildPop4,
-      setdropdown: setDropdownPop
-    }
-  ];
-*/
   //check localstorage for Rooms object
   useEffect(() => {
     dispatch({
@@ -182,6 +78,7 @@ const MainReducer = () => {
     } catch (e) {}
     */
   }, []);
+
   //console.log("dataReducer", dataReducer);
   return (
     <DataContext.Provider value={{ dataReducer, dispatch }}>

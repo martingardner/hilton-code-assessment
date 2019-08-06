@@ -6,19 +6,32 @@ import ChildpopReducer from "./childpop-reducer";
 const RoomboxReducer = props => {
   const { dataReducer, dispatch } = useContext(DataContext);
 
-  const updateCheckbox = e => {
-    //props.checkNeighborRoom(props.params.order, !props.params.checkboxState);
-    //console.log("updateCheckbox");
+  const dispatchUpdateCheckbox = (index, val) => {
     dispatch({
       type: "UPDATE_ACTIONINDEXVALUE",
-      index: props.room,
+      index: index,
       param: "checkboxChecked",
-      value: e.target.checked
+      value: val
     });
   };
 
+  const updateCheckbox = e => {
+    dispatchUpdateCheckbox(props.room, e.target.checked);
+  };
+
+  //on this checkbox being checked or unchecked, it checks neighbors to see if they should be turned off or on
+  useEffect(() => {
+    console.log(dataReducer[props.room].checkboxChecked);
+    if (props.room > 2 && dataReducer[props.room].checkboxChecked) {
+      dispatchUpdateCheckbox(parseInt(props.room) - 1, true);
+    }
+    if (props.room < 4 && !dataReducer[props.room].checkboxChecked) {
+      dispatchUpdateCheckbox(parseInt(props.room) + 1, false);
+    }
+  }, [dataReducer[props.room].checkboxChecked]);
+
   //let box = props.params.checkboxState ? boxStyle : disabledBox;
-  console.log("dataReducer", dataReducer, props.room);
+  //console.log("dataReducer", dataReducer, props.room);
   let box = dataReducer[props.room].checkboxChecked ? boxStyle : disabledBox;
 
   return (
