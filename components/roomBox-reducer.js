@@ -21,7 +21,6 @@ const RoomboxReducer = props => {
 
   //on this checkbox being checked or unchecked, it checks neighbors to see if they should be turned off or on
   useEffect(() => {
-    //console.log(dataReducer[props.room].checkboxChecked);
     if (props.room > 2 && dataReducer[props.room].checkboxChecked) {
       dispatchUpdateCheckbox(parseInt(props.room) - 1, true);
     }
@@ -30,8 +29,6 @@ const RoomboxReducer = props => {
     }
   }, [dataReducer[props.room].checkboxChecked]);
 
-  //let box = props.params.checkboxState ? boxStyle : disabledBox;
-  //console.log("dataReducer", dataReducer, props.room);
   let box = dataReducer[props.room].checkboxChecked ? boxStyle : disabledBox;
 
   return (
