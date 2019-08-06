@@ -20,7 +20,6 @@ const MainReducer = () => {
 
   const setStateFromStorage = () => {
     let storage = JSON.parse(localStorage.getItem("RoomsReducer"));
-    //console.log("storage", storage);
     dispatchPopulateData(storage);
   };
 
@@ -42,7 +41,6 @@ const MainReducer = () => {
     } catch (e) {}
   }, []);
 
-  //console.log("dataReducer", dataReducer);
   return (
     <DataContext.Provider value={{ dataReducer, dispatch }}>
       <form onSubmit={formSubmit}>
