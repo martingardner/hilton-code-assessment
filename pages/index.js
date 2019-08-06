@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//import serialize from "form-serialize";
 import Roombox from "../components/roomBox";
 
 const Main = () => {
@@ -19,8 +18,6 @@ const Main = () => {
   const formSubmit = e => {
     e.preventDefault();
     let form = document.querySelector("form");
-    console.log("form", form);
-    //let obj = serialize(form, { disabled: true, empty: true, hash: true });
     localStorageSet();
   };
 
@@ -42,12 +39,6 @@ const Main = () => {
     };
 
     localStorage.setItem("Rooms", JSON.stringify(localStorageObj));
-    /*
-    if (data) {
-      localStorage.clear();
-      localStorage.setItem("Rooms", JSON.stringify(data));
-    }
-    */
   };
 
   const setStateFromStorage = () => {
@@ -71,7 +62,6 @@ const Main = () => {
       if (localStorage.getItem("Rooms")) {
         setStateFromStorage();
       }
-      console.log("localstorage", JSON.parse(localStorage.getItem("Rooms")));
     } catch (e) {}
   }, []);
 
@@ -106,14 +96,6 @@ const Main = () => {
     }
   };
 
-  /*
-  const setDropdownPop = (setparam, val) => {
-    console.log(setparam, val);
-    //[setparam](val);
-    //setparam(val);
-    [eval(setparam)](val);
-  };
-*/
   const checkNeighborRoom = (roomOrder, checked) => {
     switch (roomOrder) {
       case 4:
