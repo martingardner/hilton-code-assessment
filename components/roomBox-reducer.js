@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Adultpop from "./adultpop";
-import Childpop from "./childpop";
+import AdultpopReducer from "./adultpop-reducer";
+import ChildpopReducer from "./childpop-reducer";
 
-const Roombox = props => {
+const RoomboxReducer = props => {
   const updateCheckbox = e => {
     props.checkNeighborRoom(props.params.order, !props.params.checkboxState);
   };
@@ -24,7 +24,7 @@ const Roombox = props => {
       </div>
       <div>
         <div style={dropdownBox}>
-          <Adultpop
+          <AdultpopReducer
             disableFields={!props.params.checkboxState}
             room={props.params.order}
             adultpop={props.params.adultpop}
@@ -32,7 +32,7 @@ const Roombox = props => {
           />
         </div>
         <div style={dropdownBox}>
-          <Childpop
+          <ChildpopReducer
             disableFields={!props.params.checkboxState}
             room={props.params.order}
             childpop={props.params.childpop}
@@ -44,7 +44,7 @@ const Roombox = props => {
   );
 };
 
-export default Roombox;
+export default RoomboxReducer;
 
 // styles
 const boxStyle = {
