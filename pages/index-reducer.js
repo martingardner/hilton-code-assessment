@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
+import RoomsReducer from "../reducer/RoomsReducer";
+import InitValues from "../data/InitValues";
+import DataContext from "../context/DataContext";
 import RoomboxReducer from "../components/roomBox-reducer";
 
 const MainReducer = () => {
+  const [dataReducer, dispatch] = useReducer(RoomsReducer, []);
+  /*
   const [getRoom1, setRoom1] = useState(true);
   const [getAdultPop1, setAdultPop1] = useState(1);
   const [getChildPop1, setChildPop1] = useState(0);
@@ -14,13 +19,14 @@ const MainReducer = () => {
   const [getRoom4, setRoom4] = useState(false);
   const [getAdultPop4, setAdultPop4] = useState(1);
   const [getChildPop4, setChildPop4] = useState(0);
-
+*/
   const formSubmit = e => {
     e.preventDefault();
     let form = document.querySelector("form");
-    localStorageSet();
+    //localStorageSet();
   };
 
+  /*
   const localStorageSet = () => {
     localStorage.clear();
 
@@ -56,7 +62,8 @@ const MainReducer = () => {
     setAdultPop4(storage.AdultPop4);
     setChildPop4(storage.ChildPop4);
   };
-
+  */
+  /*
   const setDropdownPop = (prop, val) => {
     switch (prop) {
       case "1adult":
@@ -160,21 +167,27 @@ const MainReducer = () => {
       setdropdown: setDropdownPop
     }
   ];
-
+*/
   //check localstorage for Rooms object
   useEffect(() => {
+    dispatch({
+      type: "POPULATE_DATA",
+      data: InitValues
+    });
+    /*
     try {
       if (localStorage.getItem("Rooms")) {
         setStateFromStorage();
       }
     } catch (e) {}
+    */
   }, []);
-
+  //console.log("dataReducer", dataReducer);
   return (
-    <>
+    <DataContext.Provider value={{ dataReducer, dispatch }}>
       <form onSubmit={formSubmit}>
         <fieldset style={fieldset}>
-          {roomData &&
+          {/*roomData &&
             roomData.map((data, index) => {
               return (
                 <RoomboxReducer
@@ -183,13 +196,18 @@ const MainReducer = () => {
                   checkNeighborRoom={checkNeighborRoom}
                 />
               );
+            })
+        */}
+          {dataReducer &&
+            Object.keys(dataReducer).map((data, index) => {
+              return <RoomboxReducer key={index + data} room={data} />;
             })}
         </fieldset>
         <button className="submit" style={submitButton}>
           Submit
         </button>
       </form>
-    </>
+    </DataContext.Provider>
   );
 };
 

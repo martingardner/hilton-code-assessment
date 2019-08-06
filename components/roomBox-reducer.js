@@ -1,43 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import DataContext from "../context/DataContext";
 import AdultpopReducer from "./adultpop-reducer";
 import ChildpopReducer from "./childpop-reducer";
 
 const RoomboxReducer = props => {
+  const { dataReducer, dispatch } = useContext(DataContext);
+
   const updateCheckbox = e => {
-    props.checkNeighborRoom(props.params.order, !props.params.checkboxState);
+    //props.checkNeighborRoom(props.params.order, !props.params.checkboxState);
+    //console.log("updateCheckbox");
+    dispatch({
+      type: "ROOM_CHECKBOX",
+      index: props.room,
+      checked: e.target.checked
+    });
   };
 
-  let box = props.params.checkboxState ? boxStyle : disabledBox;
+  //let box = props.params.checkboxState ? boxStyle : disabledBox;
+  console.log("dataReducer", dataReducer, props.room);
+  let box = dataReducer[props.room].checkboxChecked ? boxStyle : disabledBox;
 
   return (
     <div style={box}>
       <div style={checkboxRow}>
-        {props.params.checkbox && (
+        {dataReducer[props.room].checkboxInput && (
           <input
             type="checkbox"
             onChange={updateCheckbox}
-            checked={props.params.checkboxState}
-            name={`room${props.params.order}_checkbox`}
+            checked={dataReducer[props.room].checkboxChecked}
+            name={`room${dataReducer[props.room].order}_checkbox`}
           />
         )}
-        {props.params.name}
+        {dataReducer[props.room].name}
       </div>
       <div>
+        <div style={dropdownBox}>{<AdultpopReducer room={props.room} />}</div>
         <div style={dropdownBox}>
-          <AdultpopReducer
-            disableFields={!props.params.checkboxState}
-            room={props.params.order}
-            adultpop={props.params.adultpop}
-            setdropdown={props.params.setdropdown}
-          />
-        </div>
-        <div style={dropdownBox}>
+          {/*
           <ChildpopReducer
             disableFields={!props.params.checkboxState}
             room={props.params.order}
             childpop={props.params.childpop}
             setdropdown={props.params.setdropdown}
           />
+          */}
         </div>
       </div>
     </div>
