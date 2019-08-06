@@ -33,16 +33,17 @@ const Main = () => {
       Room3: getRoom3,
       AdultPop3: getAdultPop3,
       ChildPop3: getChildPop3,
-      Room4: getRoom2,
+      Room4: getRoom4,
       AdultPop4: getAdultPop4,
       ChildPop4: getChildPop4
     };
-
+    console.log("localStorageObj", localStorageObj);
     localStorage.setItem("Rooms", JSON.stringify(localStorageObj));
   };
 
   const setStateFromStorage = () => {
     let storage = JSON.parse(localStorage.getItem("Rooms"));
+    console.log("setStateFromStorage", storage);
     setAdultPop1(storage.AdultPop1);
     setChildPop1(storage.ChildPop1);
     setRoom2(storage.Room2);
@@ -56,14 +57,10 @@ const Main = () => {
     setChildPop4(storage.ChildPop4);
   };
 
-  //check localstorage for Rooms object
-  useEffect(() => {
-    try {
-      if (localStorage.getItem("Rooms")) {
-        setStateFromStorage();
-      }
-    } catch (e) {}
-  }, []);
+  const clearLocalStorage = () => {
+    localStorage.clear();
+    console.log("clearLocalStorage", localStorage.getItem("Rooms"));
+  };
 
   const setDropdownPop = (prop, val) => {
     switch (prop) {
@@ -169,6 +166,15 @@ const Main = () => {
     }
   ];
 
+  //check localstorage for Rooms object
+  useEffect(() => {
+    try {
+      if (localStorage.getItem("Rooms")) {
+        setStateFromStorage();
+      }
+    } catch (e) {}
+  }, []);
+
   return (
     <>
       <form onSubmit={formSubmit}>
@@ -202,4 +208,10 @@ const fieldset = {
 const submitButton = {
   marginLeft: "20px",
   padding: "10px"
+};
+
+const clearLocalStorageBtn = {
+  marginLeft: "20px",
+  padding: "10px",
+  marginTop: "20px"
 };
