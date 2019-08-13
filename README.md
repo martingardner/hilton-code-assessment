@@ -1,4 +1,4 @@
-# hilton-code-assessment
+# nextjs / react (hooks) / jest + react-testing-library
 
 test 1 &amp; 2.
 
@@ -24,13 +24,8 @@ test 1 &amp; 2.
 #justifications
 the following are justifications I used for various parts of assessment 1 and 2
 
-- Assessment 1
-  -- I made the image 100% width for the hotel even knowing it will stretch at higher tablet settings
-  primarily because there would be an image answer for this in a real world scenario.
-  -- with flat images, can only guess at fonts so left it default, with font-sizes tried to make best guess based
-  on what I could measure
+# Explanation
 
-- Assessment 2
-  -- uses localstorge for the submit save and reload. I don't have a database for this and no api so that was the best solution I could
-  come up with for page refreshes.
-  -- after 1st round of PR Changes from Hilton developers, I kept /index to be the local state version moving all of state to index.js, However I also created an index-reducer page where I swapped out all of the local state for reducers. It functions the same as /index, but you'll notice the components names will have -reducer to their name (i.e. adultpop-reducer.js) as a quick way to differentiate them from each other.
+- this is a layout of 4 rooms, when checking it will check everything to the left, when unchecking it will uncheck everything to the right and
+  return the values to default values
+- uses Jest + react-testing-library
